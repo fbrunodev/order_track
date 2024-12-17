@@ -32,13 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
+    #'django.contrib.admin',
+    #'django.contrib.auth',
     'orders',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.contenttypes',
+    #'django.contrib.sessions',
+    #'django.contrib.messages',
+    #'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -78,16 +78,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-         "OPTIONS": {
-            "service": "pg_service.conf",
-            "passfile": ".pgpass",
-            "isolation_level": IsolationLevel.SERIALIZABLE,
-            "assume_role": "my_application_role",
-            "restaurant_db" : True,
-            "server_side_binding": True,
-        },
+        'NAME': 'restaurant_db',  
+        'USER': 'postgres',  
+        'PASSWORD': '123456',  
+        'HOST': 'localhost',  
+        'PORT': '5432'
+        
     }
 }
+
 
 
 # Password validation
