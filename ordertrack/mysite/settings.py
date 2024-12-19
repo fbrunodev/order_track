@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'apps.orders',
     'apps.products',
+    'apps.dishes',
     'apps.employees',
     'apps.bills',
     'apps.core',

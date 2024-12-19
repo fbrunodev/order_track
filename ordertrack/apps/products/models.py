@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from apps.orders.models import Acompanhamentos
 from apps.core.enums import StatusProduto, TipoMovimentacaoProduto, UnidadeMedida
 # Create your models here.
 class Categorias(models.Model): 
@@ -47,21 +46,3 @@ class HistoricoCustoProdutos(models.Model):
 
 
 
-class Pratos(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    acompanhamento = models.ManyToManyField(Acompanhamentos)
-    nome = models.CharField(max_length=30)
-    preco_venda = models.DecimalField(max_digits=5, decimal_places=2)
-    status = models.IntegerField(
-        choices=[(status.value,status.name) for status in StatusProduto],
-        default=StatusProduto.DISPONIVEL.value
-    )
-  
-
-
-class ItemPratos(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    produto = models.ForeignKey(Produtos, on_delete=models.CASCADE)
-    prato = models.ForeignKey(Pratos, on_delete=models.CASCADE)
-    quantidade_por_porcao = models.DecimalField(max_digits=5, decimal_places=2)
-   
