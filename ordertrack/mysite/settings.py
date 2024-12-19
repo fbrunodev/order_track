@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from django.db.backends.postgresql.psycopg_any import IsolationLevel
-
+from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,13 +32,51 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'django.contrib.admin',
-    #'django.contrib.auth',
-    'orders',
-    #'django.contrib.contenttypes',
-    #'django.contrib.sessions',
-    #'django.contrib.messages',
-    #'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'django.contrib.auth',
+    'apps.orders',
+    'apps.products',
+    'apps.employees',
+    'apps.bills',
+    'apps.core',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    
+]
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+     #   'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        
+      
+    ],
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': 'njcMCeey2NJ85t0XIeS2z5NLhEdskbG8Sdl0qFxKLjsGUR4xbj5qPdiJGVAPQm2EryxpiEa2uLv51qWkv0pXuQ',  # Chave secreta (substitua por uma chave forte)
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    'JWK_URL': None,
+}
+
+CORS_ALLOWED_ORIGINS = [
+    'https://meufrontend.com',
+    'http://localhost:3000',
 ]
 
 MIDDLEWARE = [
