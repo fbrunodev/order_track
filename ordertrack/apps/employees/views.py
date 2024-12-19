@@ -5,9 +5,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from .models import CustomUser
 from django.contrib.auth.models import update_last_login
-from .models import Funcionarios
-from .serializers import FuncionarioSerializer,LoginSerializer,UserSerializer
+from .serializers import LoginSerializer,UserSerializer
 
 # Create your views here.
 class LoginView(APIView):
@@ -33,16 +33,10 @@ class LoginView(APIView):
             print("User authenticated successfully.")
             update_last_login(None, user_obj)
             token, created = Token.objects.get_or_create(user=user_obj)
-            
-            try:
-                employee = Funcionarios.objects.get(user=user_obj)
-                employee_data = FuncionarioSerializer(employee).data
-            except Funcionarios.DoesNotExist:
-                employee_data = {}
 
             return Response({
                 'token': str(token),
-                'employee': employee_data
+                'user': user_obj.data 
             })
         else:
             return Response({'error': 'Invalid credentials'}, status =  400)
@@ -50,7 +44,7 @@ class LoginView(APIView):
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
-        queryset = User.objects.all()
+        queryset = CustomUser.objects.all()
         serializer = UserSerializer(queryset, many = True)
 
         return Response({

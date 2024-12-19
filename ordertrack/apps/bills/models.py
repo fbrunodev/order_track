@@ -1,6 +1,6 @@
 from django.db import models
 from apps.orders.models import Pedidos
-from apps.employees.models import Funcionarios
+from django.conf import settings
 from apps.orders.models import Mesas
 from apps.core.enums import StatusConta, MetodoPagamento
 # Create your models here.
@@ -9,7 +9,7 @@ from apps.core.enums import StatusConta, MetodoPagamento
 class Contas(models.Model):
     id = models.BigAutoField(primary_key=True)
     pedido = models.OneToOneField(Pedidos, on_delete=models.CASCADE)
-    funcionario = models.ForeignKey(Funcionarios, on_delete=models.CASCADE)
+    funcionario = models.ForeignKey('employees.CustomUser', on_delete=models.CASCADE)
     mesa = models.ForeignKey(Mesas, on_delete=models.CASCADE)
     valor_total = models.DecimalField(max_digits=5, decimal_places=2)
     data = models.DateField()

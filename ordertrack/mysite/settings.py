@@ -78,6 +78,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://meufrontend.com',
     'http://localhost:3000',
 ]
+AUTH_USER_MODEL = 'employees.CustomUser'  
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

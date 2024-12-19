@@ -1,5 +1,5 @@
 from django.db import models
-from apps.employees.models import Funcionarios
+from django.conf import settings
 from apps.orders.models import Acompanhamentos
 from apps.core.enums import StatusProduto, TipoMovimentacaoProduto, UnidadeMedida
 # Create your models here.
@@ -28,7 +28,7 @@ class Produtos(models.Model):
 class MovimentacaoProdutos(models.Model):
     id = models.BigAutoField(primary_key=True)
     produto = models.ForeignKey(Produtos, on_delete=models.CASCADE)
-    funcionario = models.ForeignKey(Funcionarios, on_delete=models.CASCADE)
+    funcionario = models.ForeignKey('employees.CustomUser', on_delete=models.CASCADE)
     tipo = models.IntegerField(
         choices= [(tipo.value,tipo.name) for tipo in TipoMovimentacaoProduto],
     )
