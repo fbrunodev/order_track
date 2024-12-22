@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
 from .models import CustomUser
 from django.contrib.auth.models import update_last_login
 from .serializers import LoginSerializer,UserSerializer

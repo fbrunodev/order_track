@@ -39,6 +39,7 @@ class UnidadeMedida(Enum):
 class TipoMovimentacaoProduto(Enum):
     ENTRADA = 0
     SAIDA = 1
+    CORRECAO = 2
 
 class MetodoPagamento(Enum):
     DINHEIRO = 0
