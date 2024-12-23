@@ -68,7 +68,7 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': 'njcMCeey2NJ85t0XIeS2z5NLhEdskbG8Sdl0qFxKLjsGUR4xbj5qPdiJGVAPQm2EryxpiEa2uLv51qWkv0pXuQ',  # Chave secreta (substitua por uma chave forte)
+    'SIGNING_KEY': 'njcMCeey2NJ85t0XIeS2z5NLhEdskbG8Sdl0qFxKLjsGUR4xbj5qPdiJGVAPQm2EryxpiEa2uLv51qWkv0pXuQ',  
     'VERIFYING_KEY': None,
     'AUDIENCE': None,
     'ISSUER': None,
