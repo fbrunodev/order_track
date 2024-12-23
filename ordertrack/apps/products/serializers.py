@@ -18,12 +18,6 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Produtos
         fields = '__all__'
 
-    def create(self, validated_data):
-        produto = create_product(validated_data, self.context['request'])
-        return produto
-
-    def update(self, instance, validated_data):
-        produto = update_product(instance.id, validated_data, self.context['request'])
-        return produto
+    
     
   

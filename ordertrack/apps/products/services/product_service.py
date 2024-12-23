@@ -9,6 +9,7 @@ from apps.core.enums import TipoMovimentacaoProduto
 def create_product(validated_data,request):
     try:
         with transaction.atomic():
+      
             produto = Produtos.objects.create(**validated_data)
 
             
@@ -85,8 +86,6 @@ def delete_product(product_id,request):
     try:
         with transaction.atomic():
             produto = Produtos.objects.get(id = product_id)
-            
-
           
            
             movimentacao = MovimentacaoProdutos.objects.create(
