@@ -1,6 +1,6 @@
 from rest_framework  import serializers
 from .models import Produtos, MovimentacaoProdutos, HistoricoCustoProdutos
-from .services.product_service import create_product, update_product
+from .services.product_service import create_product, update_product, delete_product
 
 
 class MovimentacaoProdutoSerializer(serializers.ModelSerializer):
@@ -25,3 +25,5 @@ class ProductSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         produto = update_product(instance.id, validated_data, self.context['request'])
         return produto
+    
+  

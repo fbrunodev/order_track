@@ -40,6 +40,7 @@ class TipoMovimentacaoProduto(Enum):
     ENTRADA = 0
     SAIDA = 1
     CORRECAO = 2
+    EXCLUIDO = 3
 
 class MetodoPagamento(Enum):
     DINHEIRO = 0

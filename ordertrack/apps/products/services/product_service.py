@@ -78,3 +78,30 @@ def update_product(product_id, validated_data, request):
         raise ValueError("Produto não encontrado")
     
     return produto
+
+
+def delete_product(product_id,request):
+    print("Iniciando a função de exclusão para o produto:", product_id)
+    try:
+        with transaction.atomic():
+            produto = Produtos.objects.get(id = product_id)
+            
+
+          
+           
+            movimentacao = MovimentacaoProdutos.objects.create(
+                    produto=produto,
+                    funcionario= request.user,
+                    quantidade=produto.quantidade,
+                    tipo=TipoMovimentacaoProduto.EXCLUIDO.value,
+                    data=datetime.now().date(),
+                    hora=datetime.now().time() 
+            )
+            print("Movimentação criada:", movimentacao)
+            produto.delete()
+
+          
+    except Produtos.DoesNotExist:
+        print("Produto não encontrado para exclusão")  
+        raise ValueError("This product doesn't exist")
+    return produto

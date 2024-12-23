@@ -26,7 +26,7 @@ class Produtos(models.Model):
 
 class MovimentacaoProdutos(models.Model):
     id = models.BigAutoField(primary_key=True)
-    produto = models.ForeignKey(Produtos, on_delete=models.CASCADE)
+    produto = models.ForeignKey(Produtos, on_delete=models.SET_NULL, null=True)
     funcionario = models.ForeignKey('employees.CustomUser', on_delete=models.CASCADE)
     tipo = models.IntegerField(
         choices= [(tipo.value,tipo.name) for tipo in TipoMovimentacaoProduto],
