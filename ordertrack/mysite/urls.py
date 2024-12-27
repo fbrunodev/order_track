@@ -25,4 +25,7 @@ urlpatterns = [
 
     # rotas do app products
     path('products/', include('apps.products.urls')),
+
+    # Dishes router
+    path('dishes/', include('apps.dishes.urls')),
 ]
