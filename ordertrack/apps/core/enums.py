@@ -19,6 +19,7 @@ class StatusMesa(Enum):
     DISPONIVEL = 0
     INDISPONIVEL = 1 
     RESERVADA = 2
+    
 class StatusConta(Enum): 
     ABERTA = 0
     FECHADA = 1
@@ -34,6 +35,7 @@ class UnidadeMedida(Enum):
     LITRO = 1
     GRAMA = 2
     ML = 3
+    UNIDADE = 4
 
 
 class TipoMovimentacaoProduto(Enum):
