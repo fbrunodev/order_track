@@ -4,9 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 from rest_framework.response import Response
-from apps.orders.models import Mesas, Acompanhamentos
-from apps.orders.serializers import TableSerializer, SideSerializer
-
+from apps.orders.models import Acompanhamentos
+from apps.orders.serializers import  SideSerializer
 
 
 
@@ -26,8 +25,12 @@ class SideListView(generics.ListAPIView):
 
 class SideUpdateView(generics.UpdateAPIView):
     queryset = Acompanhamentos.objects.all()
-    serializers_class = SideSerializer
+    serializer_class = SideSerializer
     permission_classes = [IsAuthenticated]
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        
 
 class SideDestroyView(generics.DestroyAPIView):
     queryset = Acompanhamentos.objects.all()
