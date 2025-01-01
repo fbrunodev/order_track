@@ -27,4 +27,7 @@ urlpatterns = [
 
     # Dishes router
     path('dishes/', include('apps.dishes.urls')),
+
+    # Orders router
+    path('orders/', include('apps.orders.urls'))
 ]
