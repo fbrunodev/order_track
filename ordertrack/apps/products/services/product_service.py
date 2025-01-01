@@ -11,8 +11,6 @@ def create_product(validated_data,request):
         with transaction.atomic():
       
             produto = Produtos.objects.create(**validated_data)
-
-            
             preco_custo = validated_data.get('custo_unitario', 0)  
             HistoricoCustoProdutos.objects.create(
                 produto=produto,
@@ -38,7 +36,6 @@ def create_product(validated_data,request):
     except IntegrityError:
         print(f'Erro ao inserir dados')
 
-    
 
 def update_product(product_id, validated_data, request):
     try:

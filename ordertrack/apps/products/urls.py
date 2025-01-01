@@ -4,10 +4,10 @@ from .views import ProductListView,ProductCreateView, ProductUpdateView, Product
 from.views import CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDestroyView
 
 urlpatterns = [
-    path('list-products/', ProductListView.as_view(), name='list-products'),
-    path('create/', ProductCreateView.as_view(), name='create'),
-    path('update/<int:pk>/',ProductUpdateView.as_view() , name='update'),
-    path('<int:pk>/delete/', ProductDestroyView.as_view(), name='delete'),
+    path('create/', ProductCreateView.as_view(), name='create-product'),
+    path('', ProductListView.as_view(), name='list-products'),
+    path('update/<int:pk>/',ProductUpdateView.as_view() , name='update-product'),
+    path('<int:pk>/delete/', ProductDestroyView.as_view(), name='delete-product'),
 
     # routers related category
     path('list-category/', CategoryListView.as_view(), name='list-category'),

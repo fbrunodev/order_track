@@ -6,6 +6,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, D
 from rest_framework import status
 from .models import Produtos, Categorias
 from .serializers import ProductSerializer, CategoriaSerializer
+from .filters import ProductFilter
 from .services.product_service import create_product, update_product, delete_product,create_category, upadate_category, delete_category
 # Create your views here.
 
@@ -25,7 +26,9 @@ class ProductListView(ListAPIView):
     queryset = Produtos.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticated]
-    
+    filterset_class = ProductFilter
+   
+
 class ProductUpdateView(UpdateAPIView):
     queryset = Produtos.objects.all()
     serializer_class = ProductSerializer

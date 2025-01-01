@@ -77,7 +77,7 @@ class ItemDisheUpdateView(UpdateAPIView):
         instance = self.get_object()
         item_prato = update_item_dishe(instance.id, serializer.validated_data)
 
-class ItemDisheDestroyView(DestroyAPIView):
+class ItemDisheDestroyView(DestroyAPIView): 
     queryset = ItemPratos.objects.all()
     serializer_class = ItemDisheSerializer
     permission_classes = [IsAuthenticated]
