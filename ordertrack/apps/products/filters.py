@@ -8,4 +8,6 @@ class ProductFilter(django_filters.FilterSet):
             'nome': ['iexact','icontains'], 
             'preco_venda': ['exact','lt','gt'], 
             'status':['exact'], 
-            'unidade_medida':['exact']}
+            'unidade_medida':['exact'],
+            'categoria__nome' : ['iexact', 'icontains']
+            }

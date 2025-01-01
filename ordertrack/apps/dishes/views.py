@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, DestroyAPIView
 from .models import Pratos, ItemPratos
 from .serializers import DisheSerializer, ItemDisheSerializer,DisheWithItemSerializer, ItemListSerializer
+from .filters import DisheFilter
 from .services.dishe_service import create_dishe, update_dishe
 from .services.item_dishe_service import create_item_dishe,update_item_dishe, list_itens
 # Create your views here.
@@ -26,7 +27,7 @@ class DisheListView(ListAPIView):
     queryset = Pratos.objects.all()
     serializer_class = DisheSerializer
     permission_classes = [IsAuthenticated]
-
+    filterset__class = DisheFilter
 
 class DishUpdateView(UpdateAPIView):
     queryset = Pratos.objects.all()
