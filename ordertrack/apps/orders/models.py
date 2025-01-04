@@ -14,14 +14,14 @@ class Mesas(models.Model):
 class Pedidos(models.Model):
     id = models.BigAutoField(primary_key=True)
     mesa = models.ForeignKey(Mesas, on_delete=models.CASCADE)
-    funcionario = models.ForeignKey('employees.CustomUser', on_delete=models.CASCADE)
+    funcionario = models.ForeignKey('employees.CustomUser', on_delete=models.CASCADE, null= True)
     status =  models.IntegerField(
         choices=[(status.value, status.name) for status in StatusPedido],
         default=StatusPedido.NA_FILA.value
     )
-    data = models.DateField()
-    hora_abertura = models.TimeField()
-    hora_fechamento = models.TimeField()
+    data = models.DateField(null= True)
+    hora_abertura = models.TimeField(null= True)
+    hora_fechamento = models.TimeField(null= True)
     
 
 

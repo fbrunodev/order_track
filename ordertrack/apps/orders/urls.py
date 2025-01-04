@@ -2,7 +2,7 @@ from django.urls import path
 from .views.table_view import TableCreateView, TableListView, TableUpdateView,  TableDestroyView
 from .views.side_view import  SideCreateView, SideListView, SideUpdateView, SideDestroyView
 from .views.addons_views import AddonsCreateView, AddonsListView, AddonsUpdateView, AddonsDestroyView
-
+from .views.order_views import OrderCreateView, OrderUpdateView
 
 
 urlpatterns = [
@@ -23,8 +23,10 @@ urlpatterns = [
     path('list-addons/', AddonsListView.as_view(), name = 'list-addons'),
     path('<int:pk>/update-addons/', AddonsUpdateView.as_view(), name = 'update-addons'),
     path('<int:pk>/delete-addons/', AddonsDestroyView.as_view(), name = 'delete-addons'),
-
-
+    
+    # Order Router
+    path('create-order/', OrderCreateView.as_view(), name = 'create-order'),
+    path('<int:id>/update-order/', OrderUpdateView.as_view(), name = 'update-view'),
 ]
 
 

@@ -14,12 +14,13 @@ class StatusPedido(Enum):
     NA_FILA = 0
     PREPARANDO = 1
     PRONTO = 2
+    FECHADO = 3
 
 class StatusMesa(Enum):
     DISPONIVEL = 0
     INDISPONIVEL = 1 
     RESERVADA = 2
-    
+
 class StatusConta(Enum): 
     ABERTA = 0
     FECHADA = 1

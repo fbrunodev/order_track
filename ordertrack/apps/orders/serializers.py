@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Mesas, Acompanhamentos, Adicionais
+from .models import Mesas, Acompanhamentos, Adicionais, Pedidos
 
 class TableSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,4 +16,9 @@ class SideSerializer(serializers.ModelSerializer):
 class AddonsSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Adicionais
+        fields = '__all__'
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Pedidos
         fields = '__all__'
