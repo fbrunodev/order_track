@@ -1,7 +1,7 @@
 from datetime import datetime
 from apps.orders.models import Mesas
 from django.db import transaction, IntegrityError
-from apps.orders.models import Pedidos, Mesas
+from apps.orders.models import Pedidos, Mesas, ItemPedidos
 from apps.core.enums import StatusPedido
 
 def create_order(validated_data,request):
@@ -30,3 +30,5 @@ def update_order(order_id, validated_data):
             return pedido
     except IntegrityError as e: 
         raise ValueError('Something went wrong with the database', e)
+
+

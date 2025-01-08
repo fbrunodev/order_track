@@ -1,5 +1,4 @@
 from django.db import models
-from apps.orders.models import Acompanhamentos
 from apps.products.models import Produtos, Categorias
 from apps.core.enums import StatusProduto
 
@@ -7,7 +6,7 @@ from apps.core.enums import StatusProduto
 # Create your models here.
 class Pratos(models.Model):
     id = models.BigAutoField(primary_key=True)
-    acompanhamento = models.ManyToManyField(Acompanhamentos)
+    acompanhamento = models.ManyToManyField('orders.Acompanhamentos')
     categoria = models.ForeignKey(Categorias, on_delete=models.SET_NULL, null= True)
     nome = models.CharField(max_length=30)
     preco_venda = models.DecimalField(max_digits=5, decimal_places=2)

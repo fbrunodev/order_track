@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from apps.dishes.models import Pratos
 from apps.core.enums import StatusMesa, StatusPedido, UnidadeMedida
 
 class Mesas(models.Model):
@@ -32,10 +32,11 @@ class Acompanhamentos(models.Model):
 
 class ItemPedidos(models.Model):
     id = models.BigAutoField(primary_key=True)
-    pedido = models.ForeignKey(Pedidos, on_delete=models.CASCADE)
-    acompanhamento = models.ForeignKey(Acompanhamentos, on_delete=models.CASCADE)
-    quantidade = models.IntegerField()
-    preco_unitario = models.DecimalField(max_digits=5, decimal_places=2)
+    pedido = models.ForeignKey(Pedidos, on_delete=models.CASCADE, null= True)
+    prato = models.ForeignKey(Pratos, on_delete=models.CASCADE, null= True)
+    acompanhamento = models.ManyToManyField(Acompanhamentos, null= True)
+    quantidade = models.IntegerField(null= True)
+    preco_unitario = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     
 
 

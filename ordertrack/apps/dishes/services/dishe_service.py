@@ -1,4 +1,5 @@
-from apps.dishes.models import Pratos, ItemPratos, Acompanhamentos
+from apps.dishes.models import Pratos, ItemPratos
+from apps.orders.models import Acompanhamentos
 from django.db import transaction , IntegrityError
 
 
