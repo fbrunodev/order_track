@@ -3,7 +3,7 @@ from .views.table_view import TableCreateView, TableListView, TableUpdateView,  
 from .views.side_view import  SideCreateView, SideListView, SideUpdateView, SideDestroyView
 from .views.addons_views import AddonsCreateView, AddonsListView, AddonsUpdateView, AddonsDestroyView
 from .views.order_views import OrderCreateView, OrderUpdateView, OrderListView, OrderListDetails
-from .views.item_order_views import ItemOrderCreateView
+from .views.item_order_views import ItemOrderCreateView, ItemOrderUpdateView, ItemOrderDestroyView
 
 urlpatterns = [
     # Tables router
@@ -32,6 +32,8 @@ urlpatterns = [
 
     # Item Order Router
     path('<int:id>/add-item/', ItemOrderCreateView.as_view(), name = 'add-item'),
+    path('<int:id>/update-item-order/', ItemOrderUpdateView.as_view(), name = 'update-item-order'),
+    path('<int:pk>/delete-item-order/', ItemOrderDestroyView.as_view(), name='delete-item-order')
 ]
 
 

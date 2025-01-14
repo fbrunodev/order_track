@@ -19,3 +19,16 @@ def create_item_order(order_id,validated_data):
             return item_order
     except IntegrityError as e: 
         raise ValueError('Something went wrong with database')
+    
+
+def update_order(item_order_id, validated_data):
+    try: 
+        with transaction.atomic():
+            item_order = ItemPedidos.objects.get(id = item_order_id)
+
+            for field, value in validated_data.items():
+                setattr(item_order,field, value)
+            item_order.save()
+            return item_order
+    except IntegrityError as e:
+        raise ValueError("Something went wrong with database")
