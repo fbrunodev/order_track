@@ -19,7 +19,7 @@ class AddonsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    mesa = TableSerializer()
+    mesa = serializers.PrimaryKeyRelatedField(queryset=Mesas.objects.all())
     class Meta: 
         model = Pedidos
         fields = '__all__'

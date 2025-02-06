@@ -1,8 +1,9 @@
 from datetime import datetime
-from apps.orders.models import Mesas
 from django.db import transaction, IntegrityError
+from apps.orders.models import Mesas
+from apps.bills.models import Contas
 from apps.orders.models import Pedidos, Mesas, ItemPedidos
-from apps.core.enums import StatusPedido
+from apps.core.enums import StatusPedido,StatusConta
 
 def create_order(validated_data,request):
     try:
@@ -14,6 +15,17 @@ def create_order(validated_data,request):
                 data = datetime.now().date(),
                 hora_abertura  = datetime.now().time()
             )
+
+            Contas.objects.create(
+                pedido = pedido,
+                funcionario = request.user,
+                mesa = validated_data.get('mesa'),
+                valor_total = 0,
+                data = datetime.now().date(),
+                hora_abertura = datetime.now().time(),
+                status =  StatusConta.ABERTA.value
+            )
+            
             return pedido
     except IntegrityError as e:
         raise ValueError('Something went wrong with the database',e)
