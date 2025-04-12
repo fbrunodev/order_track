@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 from apps.orders.models import Adicionais
 from apps.orders.serializers import AddonsSerializer
-
+from apps.bills.services.bill_service import recalcular_valor_total
 # Views of Additionals
 
 class AddonsCreateView(generics.CreateAPIView):

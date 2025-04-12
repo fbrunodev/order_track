@@ -32,7 +32,7 @@ class Acompanhamentos(models.Model):
 
 class ItemPedidos(models.Model):
     id = models.BigAutoField(primary_key=True)
-    pedido = models.ForeignKey(Pedidos, on_delete=models.CASCADE, null= True)
+    pedido = models.ForeignKey(Pedidos, on_delete=models.CASCADE, null= True, related_name='itens_pedido')
     prato = models.ForeignKey(Pratos, on_delete=models.CASCADE, null= True)
     acompanhamento = models.ManyToManyField(Acompanhamentos, null= True)
     quantidade = models.IntegerField(null= True)
@@ -52,9 +52,9 @@ class Adicionais(models.Model):
 
 class ItemAdicionais(models.Model): 
     id = models.BigAutoField(primary_key=True)
-    item_pedido = models.ForeignKey(ItemPedidos, on_delete=models.CASCADE)
-    adicional = models.ForeignKey(Adicionais, on_delete=models.CASCADE)
-    quantidade = models.IntegerField
+    item_pedido = models.ForeignKey(ItemPedidos, on_delete=models.CASCADE,  related_name='item_adicional')
+    adicional = models.ForeignKey(Adicionais, on_delete=models.CASCADE, related_name='item_adicional')
+    quantidade = models.IntegerField(default=0)
     preco_unitario = models.DecimalField(max_digits=5, decimal_places=2)
     
 

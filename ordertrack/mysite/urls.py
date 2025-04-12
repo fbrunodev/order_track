@@ -29,5 +29,8 @@ urlpatterns = [
     path('dishes/', include('apps.dishes.urls')),
 
     # Orders router
-    path('orders/', include('apps.orders.urls'))
+    path('orders/', include('apps.orders.urls')),
+
+    # Bills router
+    path('bills/', include('apps.bills.urls'))
 ]

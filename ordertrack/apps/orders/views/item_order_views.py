@@ -8,6 +8,11 @@ from apps.orders.serializers import ItemOrderSerializer
 from apps.orders.services.item_order_service import create_item_order, update_order
 
 
+class ItemOrderListView(generics.ListAPIView):
+    queryset = ItemPedidos.objects.all()
+    serializer_class = ItemOrderSerializer
+    permission_classes = [IsAuthenticated]
+
 class ItemOrderCreateView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self, request,id):

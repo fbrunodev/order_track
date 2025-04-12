@@ -3,9 +3,10 @@ from .views.table_view import TableCreateView, TableListView, TableUpdateView,  
 from .views.side_view import  SideCreateView, SideListView, SideUpdateView, SideDestroyView
 from .views.addons_views import AddonsCreateView, AddonsListView, AddonsUpdateView, AddonsDestroyView
 from .views.order_views import OrderCreateView, OrderUpdateView, OrderListView, OrderListDetails
-from .views.item_order_views import ItemOrderCreateView, ItemOrderUpdateView, ItemOrderDestroyView
-
+from .views.item_order_views import ItemOrderCreateView, ItemOrderUpdateView, ItemOrderDestroyView, ItemOrderListView
+from .views.item_addons_views import ItemAddonsCreateView, ItemAddonsUpdateView, ItemAddonsDestroyView
 urlpatterns = [
+   
     # Tables router
     path('create-table/',TableCreateView.as_view(), name="create-table"),
     path('list-table/', TableListView.as_view(), name = 'list-table'),
@@ -18,12 +19,17 @@ urlpatterns = [
     path('<int:pk>/update-side/', SideUpdateView.as_view(), name ='update-side'),
     path('<int:pk>/delete-side/', SideDestroyView.as_view(), name = 'delete-side'),
 
-    # Additional Router
+    # Addons Router
     path('create-addons/', AddonsCreateView.as_view(), name = 'create-addons'),
     path('list-addons/', AddonsListView.as_view(), name = 'list-addons'),
     path('<int:pk>/update-addons/', AddonsUpdateView.as_view(), name = 'update-addons'),
     path('<int:pk>/delete-addons/', AddonsDestroyView.as_view(), name = 'delete-addons'),
     
+    # Item Addons Router
+    path('create-item-addons/',ItemAddonsCreateView.as_view(), name = 'create-item-addons'),
+    path('<int:pk>/update-item-addons/', ItemAddonsUpdateView.as_view(), name = 'update-item-addons'),
+    path('<int:pk>/delete-item-addons', ItemAddonsDestroyView.as_view(), name = 'delete-item-addons'),
+  
     # Order Router
     path('create-order/', OrderCreateView.as_view(), name = 'create-order'),
     path('<int:id>/update-order/', OrderUpdateView.as_view(), name = 'update-view'),
@@ -31,6 +37,7 @@ urlpatterns = [
     path('<int:id>/get-order/', OrderListDetails.as_view(), name = 'get-order'),
 
     # Item Order Router
+    path('list-item-order/', ItemOrderListView.as_view(), name='list-item-order'),
     path('<int:id>/add-item/', ItemOrderCreateView.as_view(), name = 'add-item'),
     path('<int:id>/update-item-order/', ItemOrderUpdateView.as_view(), name = 'update-item-order'),
     path('<int:pk>/delete-item-order/', ItemOrderDestroyView.as_view(), name='delete-item-order')

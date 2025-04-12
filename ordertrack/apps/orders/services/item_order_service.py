@@ -1,5 +1,5 @@
 from django.db import transaction, IntegrityError
-from apps.orders.models import ItemPedidos, Pedidos
+from apps.orders.models import ItemPedidos, Pedidos, ItemAdicionais
 from apps.bills.models import Contas
 from apps.bills.services.bill_service import recalcular_valor_total
 
@@ -35,3 +35,4 @@ def update_order(item_order_id, validated_data):
             return item_order
     except IntegrityError as e:
         raise ValueError("Something went wrong with database")
+    
